@@ -1,0 +1,688 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+body,td,th { overflow: hidden; font-size: 12px; font-family: 'Montserrat', sans-serif; color: #a9a9a9; cursor: default; vertical-align: baseline; outline: 0; line-height: 1; margin: 0; padding: 0; word-wrap: break-word }
+a,a:link,a:visited,a:active,a:hover { font-family: 'Montserrat', sans-serif; font-size: 12px; color: #a9a9a9; text-decoration: none; }
+div,span,applet,object,iframe,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr { border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent; margin:0; padding:0; }
+:focus { outline: 0; }
+img { border: none; }
+
+@font-face{
+	font-family: cda;
+	src: url('fonts/Keqima.ttf');
+}
+
+
+#actionmenu {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	position: absolute;
+	display: none;
+	background: rgba(0, 11, 25, 0.4);
+}
+
+#inventory {
+	top: 70%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+}
+
+#invleft {
+	height: 25vw;
+	width: 63vw;
+	background-size: 63vw;
+	background-repeat: no-repeat;
+	background-image: url('https://cdn.discordapp.com/attachments/745069439195545720/745439023958589458/3.png');
+}
+
+#invright {
+	position: relative;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 1vw;
+	margin-top: -10%;
+	left: 35%;
+	float: left;
+	display: none;
+}
+
+.drop {
+	float:left;
+	width: 4.5vw;
+	height: 4.5vw;
+	text-align: center;
+	border-radius: 50%;
+	background-color: rgb(94, 4, 4);
+	margin-right: 2.5vw;
+	transition: all 0.3s;
+}
+
+
+.use {
+	float:left;
+	width: 4.5vw;
+	height: 4.5vw;
+	text-align: center;
+	border-radius: 50%;
+	background-color: rgba(94, 81, 4);
+	margin-right: 2.5vw;
+	transition: all 0.3s;
+}
+
+
+.send {
+	float:left;
+	width: 4.5vw;
+	height: 4.5vw;
+	text-align: center;
+	border-radius: 50%;
+	background-color: rgba(19, 94, 4);
+	margin-right: 2.5vw;
+	transition: all 0.3s;
+}
+
+.qtd {
+	background: rgba(0,0,0,0.65);
+	border: 0;
+	color: #777;
+	width: 12.5vw;
+	height: 3.5vw;
+	text-align: center;
+	font-size: 1vw;
+	border-radius: 1vw;
+	transition: all 0.3s;
+}
+
+.qtd:focus {
+	transform: scale(1.05);
+}
+
+.peso {
+	font-size: 0.90vw;
+	margin-bottom: 0.1vw;
+	text-align: center;
+	color: rgba(255,255,255,0.5);
+}
+
+.peso b {
+	text-decoration: none;
+	color: rgba(255,255,255,1.0);
+}
+
+.peso s {
+	text-decoration: none;
+	color: rgba(255,255,255,0.1);
+}
+
+.slot {
+	position: relative;
+	border-radius: 0.3vw;
+	left: 10px;
+	top: 10px;
+	margin: 0.12vw;
+	width: 4.5vw;
+	height: 4.5vw;
+	float: left;
+	font-size: 0.75vw;
+	background: rgb(20, 20, 20);
+	transition: all 0.3s;
+	border: solid 1px black
+}
+
+.slot s {
+	width: 120px;
+	height: 120px;
+	font-size: 9px;
+	text-decoration: none;
+	position: absolute;
+	margin: -45px 0 0 15px;
+	color: rgba(255,255,255,0.5);
+}
+
+
+.hoverControl {
+	color: #fff;
+	transition: all 0.3s;
+	transform: scale(1.2);
+}
+
+.margin-to-class {
+	font-size: 1vw;
+	margin-top: 1.35vw;
+	text-align: center;
+}
+
+.name {
+	color: white;
+	margin-top: 4.25vw;
+	text-align: center;
+	width: 7.5vw;
+	font-size: 1vw;
+	border-bottom-left-radius: 1vw;
+	border-bottom-right-radius: 1vw;
+	padding-bottom: 0.5vw;
+	padding-top: 0.5vw;
+}
+
+.quilos {
+	margin-top: -6.5vw;
+	margin-left: 0.75vw;
+	color: white;
+}
+
+.quantity {
+	width: 3vw;
+	margin-left: 1.3vw;
+	text-align: right;
+	margin-top: -0.3vw;
+	color: white;
+}
+.image {
+	height: 4vw;
+}
+
+#inventory-near {
+	top: 44.5%;
+	left: 14%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+}
+
+.peso-near {
+    font-size: 0.75vw;
+	margin-bottom: 0.1vw;
+	text-align: center;
+    font-weight: 600;
+	color: rgba(255,255,255,1.0);
+}
+#invleft-near {
+	height: 35vw;
+	width: 22vw;
+	overflow-y: scroll;
+	border-radius: 1vw;
+	overflow-x: hidden;
+}
+
+.slot-near {
+	border-radius: 1vw;
+	margin: 0.1vw;
+	width: 20vw;
+	height: 4.5vw;
+	font-size: 0.75vw;
+	background: rgba(0,0,0,0.25);
+	transition: all 0.3s;
+}
+
+.slot-near s {
+	width: 120px;
+	height: 120px;
+	font-size: 9px;
+	text-decoration: none;
+	position: absolute;
+	margin: -45px 0 0 15px;
+	color: rgba(255,255,255,0.5);
+}
+
+
+.image-near {
+	height: 4.5vw;
+    background-color: rgba(0,0,0,0.35);
+    border-top-left-radius: 1vw;
+    border-bottom-left-radius: 1vw;
+}
+
+.quantity-near {
+	width: 3vw;
+	margin-left: 16vw;
+	text-align: right;
+    font-size: 1vw;
+	margin-top: -2.65vw;
+	color: white;
+}
+
+.name-near {
+	color: white;
+	margin-top: -1.1vw;
+    margin-left: 5vw;
+	text-align: center;
+	width: 7.5vw;
+	font-size: 1.1vw;
+}
+
+/*---------------------------------*/
+
+#inventory-armado {
+	top: 44.5%;
+	right: 13%;
+	position: absolute;
+	transform: translate(50%,-50%);
+}
+
+.peso-armado {
+    font-size: 0.75vw;
+	margin-bottom: 0.1vw;
+	text-align: center;
+    font-weight: 600;
+	color: rgba(255,255,255,1.0);
+}
+#invleft-armado {
+	height: 35vw;
+	width: 24vw;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.slot-armado {
+	border-radius: 1vw;
+	margin: 0.75vw;
+	width: 22vw;
+	height: 6vw;
+	font-size: 0.75vw;
+	background: rgba(0,0,0,0.25);
+	transition: all 0.3s;
+}
+
+.image-armado {
+    margin-top: -0.5vw;
+    margin-left: 8.5vw;
+	height: 6vw;
+}
+
+.name-armado {
+	color: white;
+    background-color: rgba(0,0,0,0.35);
+    padding-top: 0.35vw;
+    padding-bottom: 0.35vw;
+    margin-top: -1.1vw;
+    width: 100%;
+	text-align: center;
+	font-size: 1vw;
+    border-bottom-right-radius: 1vw;
+    border-bottom-left-radius: 1vw;
+}
+
+.name-wammo {
+	margin-top: 2vw;
+	padding: 0;
+	float: right;
+	margin-right: 1vw;
+	font-size: 0.95vw;
+}
+
+::-webkit-scrollbar-track {
+	background-color: transparent;
+	border-radius: 0.5vw;
+}
+
+::-webkit-scrollbar {
+	width: 0.5vw;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 0.5vw;
+	background-color: transparent;
+	background-image: none;
+}
+
+#d-peso{
+	position: relative;
+	top: 48.5vh;
+	height: 3vh;
+	border-radius: 20px;
+	background-repeat: no-repeat;
+	background-image: url('https://cdn.discordapp.com/attachments/741833971155075202/745450014377246740/test.png');
+	background-size: 63vw;
+}
+
+#peso2{
+	position: absolute;
+
+	border-radius: 20px;
+	background: rgb(252, 252, 252);
+	height: 25px;
+	top: 0px;
+}
+
+
+.esquerdatopo{
+	float: left;
+	width: 45px;
+	font-size: 14px;  
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: black;
+	margin-top: 6px;
+	margin-left: 11px;
+
+}
+
+#livrefundo{
+	width: 200px;
+	height: 10px;
+	margin-top: 7.5px;
+	float: left;
+	border-radius: 10px;
+	background: rgb(8, 8, 8);
+	margin-left: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+#livrefundo span{
+	background: rgb(7, 104, 12);
+	display: block;
+	border-radius: 20px;
+
+	height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+#direitatopo{
+	float: left;
+	width: 80px;
+	color: rgb(61, 139, 37);
+	margin-top: 7.5px;
+	margin-left: 2px;
+
+	font-size: 14px;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.datapeso{
+	white-space: nowrap;
+	width: 43%;      
+	overflow: hidden;    
+	text-overflow:    clip clip;
+}
+
+.datamaxpseo{
+	position: relative;
+	top: -14px;
+	left: 5px;
+}
+
+#amount{
+	position: relative;
+	background: rgb(3, 3, 3);
+	right: -50.7vw;
+	top: 0.9vh;
+	height: 25px;
+	
+}
+
+/* IDENTIDADE*/
+
+
+
+
+#identidadeId {
+	display: none;
+	position: absolute;
+	top: 23.7%;
+	right: 18.5%;
+	width: 63vw;
+	border-radius: 20px;
+	overflow: hidden;
+	font-size: 35px;
+	text-align: left;
+	font-family: cda;
+	height: 23vh;
+	width: 63vw;
+	background-size: 63vw;
+	background-repeat: no-repeat;
+	background-image: url('https://cdn.discordapp.com/attachments/745069439195545720/745443581401104394/4.png');
+}
+
+
+#identidadeId .cargo {
+	 position: absolute;
+	 margin: auto;
+	 
+	 padding: 8px;
+	 top: 2px;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 width: inherit;
+	 height: 40px;
+	 text-align: center;
+	 outline: none;
+}
+#identidadeId .cargo p {
+	 padding: 5px 20px;
+	 border-radius: 10px;
+	 color: white;
+	 letter-spacing: 0.05em;
+	 text-decoration: none;
+	 transition: all 1s;
+}
+
+.emprego{
+	position: absolute;
+	margin: auto;
+	left: 2%;
+	width: 230px;
+	text-align: center;
+	height: 30px;
+	top: 30%;
+	color: white;
+	text-align: left;
+	line-height: 13px;
+}
+
+
+
+.documento{
+	position: absolute;
+	margin: auto;
+	left: 2%;
+	width: 320px;
+	text-align: center;
+	height: 40px;
+	top: 5%;
+	color: white;
+	text-align: left;
+	line-height: 13px;
+
+}
+
+.telefone{
+	position: absolute;
+	margin: auto;
+	left: 35%;
+	width: 320px;
+	text-align: center;
+	height: 40px;
+	top: 5%;
+	color: white;
+	text-align: left;
+	line-height: 13px;
+
+}
+
+
+
+.vip{
+	position: absolute;
+	margin: auto;
+	left: 35%;
+	width: 320px;
+	text-align: center;
+	height: 40px;
+	top: 30%;
+	color: white;
+	text-align: left;
+	line-height: 13px;
+}
+
+
+
+
+.carteira{
+	position: absolute;
+	margin: auto;
+	left: 2%;
+	width: 320px;
+	text-align: center;
+	height: 40px;
+	top: -25%;
+	color: white;
+	text-align: left;
+	line-height: 13px;
+	font-size: 20px;
+}
+
+.banco{
+	position: absolute;
+	margin: auto;
+	left: 8%;
+	width: 320px;
+	text-align: center;
+	height: 40px;
+	top: 59%;
+	color: white;
+}
+
+.multas{
+	position: absolute;
+	margin: auto;
+	left: 2%;
+	width: 320px;
+	text-align: center;
+	height: 40px;
+	top: 55%;
+	color: white;
+	text-align: left;
+	line-height: 13px;
+
+}
+
+
+.mypaypal{
+	position: absolute;
+	margin: auto;
+	left: 8%;
+	width: 320px;
+	text-align: center;
+	height: 40px;
+	top: 83%;
+	color: white;
+}
+
+#identidadeId .ds-doc .ds:nth-of-type(2) {
+	animation-delay: 0.5s;
+}
+#ridentidadeIdoxId .ds-doc .ds:nth-of-type(1) {
+	animation-delay: 1s;
+}
+#identidadeId footer {
+	color: white;
+	font-size: 12px;
+	font-weight: 300;
+	letter-spacing: 2px;
+	position: absolute;
+	bottom: 0;
+ 	 left: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0.2;
+}
+
+#identidadeParte1{
+	display: block;
+	position: absolute;
+	top: 11%;
+	right: 18.5%;
+	border-radius: 20px;
+	overflow: hidden;
+	font-size: 35px;
+	text-align: left;
+	font-family: cda;
+	height: 12vh;
+	width: 63vw;
+	background-size: 63vw;
+	background-repeat: no-repeat;
+	background-image: url('https://cdn.discordapp.com/attachments/745069439195545720/745447252079804567/test.png');
+}
+
+.nome{
+	position: absolute;
+	margin: auto;
+	left: 24%;
+	width: 320px;
+	text-align: center;
+	height: 40px;
+	top: 20%;
+	color: white;
+	text-align: left;
+	line-height: 13px;
+}
+
+.idade{
+	position: absolute;
+	margin: auto;
+	left: 54%;
+	width: 320px;
+	text-align: center;
+	height: 40px;
+	top: 20%;
+	color: white;
+	text-align: left;
+	line-height: 13px;
+}
+
+.identidade{
+	position: absolute;
+	margin: auto;
+	left: 84%;
+	width: 320px;
+	text-align: center;
+	height: 40px;
+	top: 20%;
+	color: white;
+	text-align: left;
+	line-height: 13px;
+}
+
+.identificacao{
+	position: relative;
+	top: -18px;
+	left: 50px;
+}
+
+#fechar{
+	position: relative;
+	width: 63vw;
+	height: 2.5vh;
+	border-radius: 20px;
+	background-repeat: no-repeat;
+	background-image: url('https://cdn.discordapp.com/attachments/745069439195545720/745807631687483463/test.png');
+	background-size: 63vw;
+	top: 8%;
+	right: -18.5%;
+
+}
+
+.botao{
+	position: absolute; 
+	right: 9px;
+	background: linear-gradient(to right, rgb(255, 73, 73), rgb(228, 72, 72), rgb(134, 13, 13));
+	border: transparent;
+	width: 23px;
+	height: 20px;
+	border-radius: 50%;
+	color: white;
+	top: 2px;
+	font-size: 13px;
+	text-align: center;
+	transition: 0.5s;
+}
+
+.botao:hover{
+	transform: scale(1.2)
+}
+
